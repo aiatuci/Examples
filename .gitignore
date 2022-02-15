@@ -1,0 +1,7 @@
+# Editor files
+.vscode/
+# Datasets
+
+# Generated files
+__pycache__/
+
