@@ -19,11 +19,13 @@ class Predictor:
             tensor = torch.LongTensor(indexed).to(self.device)              #convert to tensor
             tensor = tensor.unsqueeze(0).T                             #reshape in form of batch,no. of words
             length_tensor = torch.LongTensor(length)                   #convert to tensor
-            prediction = self.net(tensor, length_tensor)                  #prediction 
-        return prediction.item()
-
+            prediction = self.net(tensor, length_tensor)                  #prediction
+        isPositive = bool(int(torch.round(torch.sigmoid(torch.tensor(prediction.item())))))
+        return "Positive" if isPositive else "Negative"
+        
 
 if __name__ == "__main__":
     model = Predictor()
-    print(model.predict("Bad bad rad sad"))
+    print(model.predict("Beautiful! Love it."))
+    print(model.predict("Horrible! Hate it."))
     

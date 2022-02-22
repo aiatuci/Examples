@@ -88,14 +88,14 @@ train_iterator, test_iterator = data.BucketIterator.splits(
     sort_within_batch = True,
     device = device)
 
-model = RNN(INPUT_DIM, EMBEDDING_DIM, HIDDEN_DIM, OUTPUT_DIM, 
-            N_LAYERS, BIDIRECTIONAL, DROPOUT, PAD_IDX)
-optimizer = optim.Adam(model.parameters())
-criterion = nn.BCEWithLogitsLoss()
-model = model.to(device)
-criterion = criterion.to(device)
-
 def train_model():
+    model = RNN(INPUT_DIM, EMBEDDING_DIM, HIDDEN_DIM, OUTPUT_DIM, 
+            N_LAYERS, BIDIRECTIONAL, DROPOUT, PAD_IDX)
+    optimizer = optim.Adam(model.parameters())
+    criterion = nn.BCEWithLogitsLoss()
+    model = model.to(device)
+    criterion = criterion.to(device)
+
     train_loss, train_acc = train(model, train_iterator, optimizer, criterion)
     loss, acc = evaluate(model, test_iterator, criterion)
     print(f'Test Loss: {loss:.3f}')
