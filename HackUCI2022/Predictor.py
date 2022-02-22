@@ -22,10 +22,4 @@ class Predictor:
             prediction = self.net(tensor, length_tensor)                  #prediction
         isPositive = bool(int(torch.round(torch.sigmoid(torch.tensor(prediction.item())))))
         return "Positive" if isPositive else "Negative"
-        
-
-if __name__ == "__main__":
-    model = Predictor()
-    print(model.predict("Beautiful! Love it."))
-    print(model.predict("Horrible! Hate it."))
     
