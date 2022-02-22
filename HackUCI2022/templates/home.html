@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Is The Movie Canny?</title>
+    </head>
+    <body>
+        <h1>Is this a good or bad review?</h1>
+        <h2>Type in your review here and our AI will tell you.</h2>
+        <form method="POST" action="{{url_for('predict')}}">
+            <input type="text" name="review" placeholder="Put your review here"><br/>
+            <input type="submit" value="Analyze Review">
+        </form>
+    </body>
+</html>
