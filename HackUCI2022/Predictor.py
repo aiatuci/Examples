@@ -21,5 +21,5 @@ class Predictor:
             length_tensor = torch.LongTensor(length)                   #convert to tensor
             prediction = self.net(tensor, length_tensor)                  #prediction
         isPositive = bool(int(torch.round(torch.sigmoid(torch.tensor(prediction.item())))))
-        return "Positive" if isPositive else "Negative"
+        return isPositive
     

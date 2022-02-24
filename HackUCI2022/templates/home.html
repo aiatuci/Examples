@@ -1,13 +1,16 @@
 <html>
     <head>
         <title>Is The Movie Canny?</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
     </head>
     <body>
-        <h1>Is this a good or bad review?</h1>
-        <h2>Type in your review here and our AI will tell you.</h2>
-        <form method="POST" action="{{url_for('predict')}}">
-            <input type="text" name="review" placeholder="Put your review here"><br/>
-            <input type="submit" value="Analyze Review">
-        </form>
+        <div class="wrapper">
+            <h1>Is this a good or bad review?</h1>
+            <h2>Type in your review here and our AI will tell you.</h2>
+            <form method="POST" action="{{url_for('predict')}}">
+                <textarea cols="50" rows="20" name="review" placeholder="Put your review here"></textarea><br/>
+                <input type="submit" value="Analyze Review">
+            </form>
+        </div>
     </body>
 </html>

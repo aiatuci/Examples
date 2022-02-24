@@ -1,8 +1,13 @@
 <html>
     <head>
         <title>Is The Movie Canny?</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
     </head>
     <body>
-        <p>Result: It is a {{rating}} review.</p>
+        <div class="wrapper">
+            {% block image %}{% endblock %}<br/>
+            <h2>Result: It is a {% block result %}{% endblock %} review!</h2><br/>
+            <h3>{% block response %}{% endblock %}</h3>
+        </div>
     </body>
 </html>
