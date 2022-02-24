@@ -100,3 +100,8 @@ def train_model():
     loss, acc = evaluate(model, test_iterator, criterion)
     print(f'Test Loss: {loss:.3f}')
     print(f'Test Acc: {acc:.3f}')
+
+    torch.save(model.state_dict(), 'models/model.pt')
+
+if __name__ == "__main__":
+    train_model()

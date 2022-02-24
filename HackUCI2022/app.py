@@ -10,7 +10,6 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
     review = request.form.get('review')
-    print(review)
     isPositive = app.predictor.predict(review)
     return render_template("canny.html") if isPositive else render_template("uncanny.html")
 
