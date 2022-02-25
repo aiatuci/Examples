@@ -11,7 +11,7 @@ class Predictor:
         self.net.eval()
         self.nlp = spacy.load('en_core_web_sm')
 
-    def predict(self, text):
+    def predict(self, text: str) -> bool:
         with torch.no_grad():
             tokenized = [tok.text for tok in self.nlp.tokenizer(text)]  #tokenize the sentence 
             indexed = [TEXT.vocab.stoi[t] for t in tokenized]          #convert to integer sequence
@@ -20,6 +20,6 @@ class Predictor:
             tensor = tensor.unsqueeze(0).T                             #reshape in form of batch,no. of words
             length_tensor = torch.LongTensor(length)                   #convert to tensor
             prediction = self.net(tensor, length_tensor)                  #prediction
-        isPositive = bool(int(torch.round(torch.sigmoid(torch.tensor(prediction.item())))))
-        return isPositive
+        is_positive = bool(torch.round(torch.sigmoid(torch.tensor(prediction.item()))))
+        return is_positive
     
