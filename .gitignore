@@ -1,7 +1,9 @@
+.DS_Store
 # Editor files
 .vscode/
 # Datasets
 
 # Generated files
 __pycache__/
+.ipynb_checkpoints/
 
